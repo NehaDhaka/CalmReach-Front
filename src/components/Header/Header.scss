@@ -1,0 +1,52 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.header {
+  background-color: $primary-light;
+  padding: 2rem 0;
+
+  .container {
+    @include desktop-center;
+  }
+
+  &__nav-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    list-style: none;
+  }
+
+  &__logo {
+    width: 16rem;
+  }
+  &__logo img {
+    width: 100%;
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    color: $primary-brand;
+    font-size: 1.2rem;
+    padding-bottom: 0.6rem;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+
+    &:hover {
+      border-bottom: 2px solid $primary-brand;
+    }
+
+    &--cta {
+      background-color: $primary-brand;
+      color: $primary-light;
+      padding: 0.6rem 2rem;
+      border-radius: 1rem;
+
+      &:hover {
+        border-bottom: none;
+        background-color: $primary-light;
+        outline: 2px solid $primary-brand;
+        color: $primary-brand;
+      }
+    }
+  }
+}
