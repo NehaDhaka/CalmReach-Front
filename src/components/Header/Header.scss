@@ -1,15 +1,28 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixin" as *;
 
+.active {
+  border-bottom: 2px solid $primary-brand;
+}
+
 .header {
   background-color: $primary-light;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
+  width: 100vw;
 
   .container {
     @include desktop-center;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__nav {
+    display: none;
+
+    @include tablet {
+      display: inline-block;
+    }
   }
 
   &__nav-list {
@@ -20,7 +33,7 @@
   }
 
   &__logo {
-    width: 16rem;
+    width: 12rem;
   }
   &__logo img {
     width: 100%;

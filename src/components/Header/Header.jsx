@@ -1,6 +1,7 @@
 import "./Header.scss";
 import logo from "../../assets/logos/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import Hamburger from "../Hamburger/Hamburger";
 
 export default function Header() {
   return (
@@ -9,22 +10,28 @@ export default function Header() {
         <Link to="/" className="header__logo">
           <img src={logo} alt="Logo" />
         </Link>
+
+        <Hamburger />
+
         <nav className="header__nav">
           <ul className="header__nav-list">
             <li className="header__nav-item">
-              <a href="#" className="header__nav-link">
+              <NavLink to="/" className="header__nav-link">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="header__nav-item">
-              <a href="#" className="header__nav-link">
+              <NavLink to="/login" className="header__nav-link">
                 Login
-              </a>
+              </NavLink>
             </li>
             <li className="header__nav-item">
-              <a href="#" className="header__nav-link header__nav-link--cta">
+              <NavLink
+                to="/register"
+                className="header__nav-link header__nav-link--cta"
+              >
                 Register
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>

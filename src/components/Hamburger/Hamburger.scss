@@ -1,0 +1,85 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.hamburger-menu {
+  overflow-y: hidden;
+  @include tablet {
+    display: none;
+  }
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+
+  &__line {
+    height: 2px;
+    background-color: $primary-brand;
+    transition: all 0.5s ease-in-out;
+
+    &--first {
+      width: 10px;
+    }
+
+    &--second {
+      width: 15px;
+    }
+
+    &--third {
+      width: 20px;
+    }
+
+    &--first-open {
+      width: 20px;
+      transform: translateY(9px) rotate(50deg);
+    }
+
+    &--second-open {
+      opacity: 0;
+    }
+
+    &--third-open {
+      width: 20px;
+      transform: translateY(-8px) rotate(-50deg);
+    }
+  }
+
+  &__menu-items {
+    transform: translateX(100%);
+    overflow-y: hidden;
+    position: absolute;
+    top: 109.14px;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    background-color: $primary-light;
+    opacity: 0;
+
+    transition: all 0.5s ease-in-out;
+
+    &.hamburger__open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  &__menu-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 4rem;
+  }
+
+  &__menu-link {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: $primary-brand;
+  }
+}
