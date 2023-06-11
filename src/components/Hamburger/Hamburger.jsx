@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import "./Hamburger.scss";
 import { useState } from "react";
 
@@ -32,19 +33,23 @@ export default function Hamburger() {
       >
         <ul className="hamburger__menu-list">
           <li className="hamburger__menu-item">
-            <a className="hamburger__menu-link" href="/">
+            <NavLink to="/" className="hamburger__menu-link" href="/">
               Home
-            </a>
+            </NavLink>
           </li>
           <li className="hamburger__menu-item">
-            <a className="hamburger__menu-link" href="/about">
+            <NavLink to="/login" className="hamburger__menu-link" href="/about">
               Login
-            </a>
+            </NavLink>
           </li>
           <li className="hamburger__menu-item">
-            <a className="hamburger__menu-link" href="/contact">
+            <NavLink
+              to="/register"
+              className="hamburger__menu-link"
+              href="/contact"
+            >
               Register
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

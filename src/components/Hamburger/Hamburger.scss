@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .hamburger-menu {
-  overflow-y: hidden;
+  overflow-x: hidden;
   @include tablet {
     display: none;
   }
@@ -50,18 +50,19 @@
 
   &__menu-items {
     transform: translateX(100%);
-    overflow-y: hidden;
+    overflow-x: hidden;
     position: absolute;
     top: 109.14px;
     left: 0;
-    width: 100%;
-    height: 80vh;
-    background-color: $primary-light;
+    width: 0;
+    height: 100vh;
+    background-color: rgba(251, 249, 243, 0.933);
     opacity: 0;
-
+    pointer-events: none;
     transition: all 0.5s ease-in-out;
 
     &.hamburger__open {
+      width: 100%;
       transform: translateX(0);
       opacity: 1;
     }
