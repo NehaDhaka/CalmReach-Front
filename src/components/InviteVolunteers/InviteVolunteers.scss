@@ -1,0 +1,56 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.invite-volunteers {
+  background-color: #fcf3f0;
+  margin-top: 2rem;
+  padding: 2rem 0;
+
+  &__container {
+    @include desktop {
+      @include desktop-center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  &__title {
+    font-size: 3rem;
+    color: $primary-brand;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    line-height: 1.4;
+    font-size: 1.1rem;
+  }
+
+  &__button {
+    text-decoration: none;
+    font-weight: 500;
+    background-color: $primary-brand;
+    color: $primary-light;
+    padding: 0.8rem 2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+
+    &:hover {
+      border-bottom: none;
+      background-color: $primary-light;
+      outline: 2px solid $primary-brand;
+      color: $primary-brand;
+    }
+  }
+}
