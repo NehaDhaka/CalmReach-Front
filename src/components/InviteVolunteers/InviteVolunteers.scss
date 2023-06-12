@@ -7,28 +7,50 @@
   padding: 2rem 0;
 
   &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 0 1rem;
     @include desktop {
       @include desktop-center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem;
     }
   }
 
   &__content {
     display: flex;
     align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    @include tablet {
+      flex-direction: row;
+    }
   }
+
+  &__img {
+    width: 100%;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
   &__text-container {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    @include desktop {
+      gap: 4rem;
+    }
   }
+
   &__title {
-    font-size: 3rem;
+    font-size: 2rem;
     color: $primary-brand;
     margin-bottom: 1rem;
+
+    @include desktop {
+      font-size: 3rem;
+    }
   }
 
   &__description {
