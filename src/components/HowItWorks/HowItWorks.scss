@@ -1,2 +1,175 @@
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
+
+.how {
+  padding: 4rem 1rem;
+
+  &__container {
+    @include tablet {
+      @include desktop-center;
+    }
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    @include desktop {
+      font-size: 2.2rem;
+    }
+    color: $primary-brand;
+  }
+
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__intro {
+    background-color: #dbebe8;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+    @include desktop {
+      flex-direction: row;
+      padding: 0 2rem;
+    }
+    img {
+      width: 100%;
+    }
+
+    @include tablet {
+      img {
+        width: 50%;
+      }
+    }
+
+    @include desktop {
+      img {
+        width: 50%;
+      }
+    }
+  }
+
+  &__content-heading {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #4b4b49;
+  }
+
+  &__content-description {
+    font-size: 1.1rem;
+  }
+  &__subtitle {
+    font-size: 1.6rem;
+    color: #4b4b49;
+  }
+
+  &__box-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    margin-top: 3rem;
+
+    @include desktop {
+      flex-direction: row;
+    }
+    img {
+      align-self: flex-end;
+    }
+  }
+
+  &__number {
+    font-size: 4rem;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include desktop {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &--first {
+      background-color: #fdedef;
+      img {
+        width: 80%;
+      }
+
+      @include tablet {
+        img {
+          width: 50%;
+        }
+      }
+
+      @include desktop {
+        img {
+          width: 80%;
+        }
+      }
+    }
+
+    &--second {
+      background-color: #ecebf2;
+      img {
+        width: 70%;
+      }
+
+      @include tablet {
+        img {
+          width: 45%;
+        }
+      }
+
+      @include desktop {
+        img {
+          width: 70%;
+        }
+      }
+    }
+
+    &--third {
+      background-color: #e3ecff;
+      img {
+        width: 50%;
+      }
+
+      @include tablet {
+        img {
+          width: 30%;
+        }
+      }
+
+      @include desktop {
+        img {
+          width: 50%;
+        }
+      }
+    }
+  }
+  &__text {
+    line-height: 1.4;
+    font-size: 1.1rem;
+  }
+
+  &__box-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
