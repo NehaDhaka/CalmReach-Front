@@ -3,7 +3,7 @@ import logo from "../../assets/logos/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
 
-export default function Header() {
+export default function Header({ handleUserRegister }) {
   return (
     <header className="header">
       <div className="container">
@@ -21,17 +21,15 @@ export default function Header() {
               </NavLink>
             </li>
             <li className="header__nav-item">
-              <NavLink to="/login" className="header__nav-link">
-                Login
-              </NavLink>
+              <a className="header__nav-link">Login</a>
             </li>
             <li className="header__nav-item">
-              <NavLink
-                to="/register"
+              <a
+                onClick={handleUserRegister}
                 className="header__nav-link header__nav-link--cta"
               >
                 Register
-              </NavLink>
+              </a>
             </li>
           </ul>
         </nav>

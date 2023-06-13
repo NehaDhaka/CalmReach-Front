@@ -9,6 +9,10 @@ export default function Hamburger() {
     setIsOpen(!isOpen);
   };
 
+  const handleR = () => {
+    console.log("hi");
+  };
+
   return (
     <div className="hamburger-menu">
       <div className={`hamburger `} onClick={handleClick}>
@@ -33,23 +37,15 @@ export default function Hamburger() {
       >
         <ul className="hamburger__menu-list">
           <li className="hamburger__menu-item">
-            <NavLink to="/" className="hamburger__menu-link" href="/">
+            <NavLink onClick={handleR} to="/" className="hamburger__menu-link">
               Home
             </NavLink>
           </li>
           <li className="hamburger__menu-item">
-            <NavLink to="/login" className="hamburger__menu-link" href="/about">
-              Login
-            </NavLink>
+            <a className="hamburger__menu-link">Login</a>
           </li>
-          <li className="hamburger__menu-item">
-            <NavLink
-              to="/register"
-              className="hamburger__menu-link"
-              href="/contact"
-            >
-              Register
-            </NavLink>
+          <li onClick={handleR} className="hamburger__menu-item">
+            <a className="hamburger__menu-link">Register</a>
           </li>
         </ul>
       </div>

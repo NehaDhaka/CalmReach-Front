@@ -14,9 +14,7 @@ export default function Hero() {
               You're not alone on this journey towards healing and resilience.
             </p>
           </div>
-          <Link to="/register" className="hero__button">
-            Get Started
-          </Link>
+          <Link className="hero__button">Get Started</Link>
         </div>
         <img
           className="hero__img"
