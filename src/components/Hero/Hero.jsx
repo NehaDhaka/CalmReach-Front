@@ -1,7 +1,7 @@
 import "./Hero.scss";
 import hero from "../../assets/images/hero.png";
 import { Link } from "react-router-dom";
-export default function Hero() {
+export default function Hero({ handleUserRegister }) {
   return (
     <section className="hero">
       <div className="hero__container">
@@ -14,7 +14,9 @@ export default function Hero() {
               You're not alone on this journey towards healing and resilience.
             </p>
           </div>
-          <Link className="hero__button">Get Started</Link>
+          <Link onClick={handleUserRegister} className="hero__button">
+            Get Started
+          </Link>
         </div>
         <img
           className="hero__img"

@@ -13,6 +13,10 @@ export default function Home() {
     setIsOpen(true);
   };
 
+  const handleVolunteerRegister = () => {
+    setIsOpen(true);
+  };
+
   const handleModalClose = () => {
     setIsOpen(false);
   };
@@ -20,9 +24,9 @@ export default function Home() {
   return (
     <>
       <Header handleUserRegister={handleUserRegister} />
-      <Hero />
+      <Hero handleUserRegister={handleUserRegister} />
       <HowItWorks />
-      <InviteVolunteers />
+      <InviteVolunteers handleVolunteerRegister={handleVolunteerRegister} />
       <Footer />
       <RegisterModalUser isOpen={isOpen} onClose={handleModalClose} />
     </>

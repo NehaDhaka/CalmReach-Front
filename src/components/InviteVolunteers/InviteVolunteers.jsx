@@ -2,7 +2,7 @@ import "./InviteVolunteers.scss";
 import volunteer from "../../assets/images/invite-volunteers.png";
 import { Link } from "react-router-dom";
 
-export default function InviteVolunteers() {
+export default function InviteVolunteers({ handleVolunteerRegister }) {
   return (
     <section className="invite-volunteers">
       <div className="invite-volunteers__container">
@@ -26,7 +26,12 @@ export default function InviteVolunteers() {
             </p>
           </div>
         </div>
-        <Link className="invite-volunteers__button">Become a Volunteer</Link>
+        <Link
+          onClick={handleVolunteerRegister}
+          className="invite-volunteers__button"
+        >
+          Become a Volunteer
+        </Link>
       </div>
     </section>
   );
