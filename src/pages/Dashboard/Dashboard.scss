@@ -1,0 +1,35 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.dashboard {
+  &__container {
+    border-radius: 10px;
+    background-color: #fdeeed;
+    @include desktop {
+      @include desktop-center;
+      margin-top: 5rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    padding: 2rem 0rem;
+    justify-content: space-between;
+    @include desktop {
+      @include desktop-center;
+    }
+  }
+
+  &__header-logo {
+    width: 12rem;
+  }
+}
+ion-icon {
+  font-size: 2rem;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-brand;
+  }
+}

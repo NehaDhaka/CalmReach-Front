@@ -1,0 +1,71 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.contacts {
+  display: grid;
+  grid-template-rows: 85% 15%;
+  overflow: hidden;
+  background-color: #080420;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    gap: 0.8rem;
+    &::-webkit-scrollbar {
+      width: 0.2rem;
+      &-thumb {
+        background-color: #ffffff39;
+        width: 0.1rem;
+        border-radius: 1rem;
+      }
+    }
+  }
+  &__item {
+    background-color: #ffffff34;
+    min-height: 5rem;
+    cursor: pointer;
+    width: 90%;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+  }
+
+  &__item-name {
+    h3 {
+      color: white;
+    }
+  }
+  &__item-img {
+    img {
+      height: 3rem;
+    }
+  }
+
+  .selected {
+    background-color: #9a86f3;
+  }
+
+  &__current-user {
+    background-color: #0d0d30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  &__current-username {
+    h2 {
+      color: white;
+    }
+  }
+  &__current-avatar {
+    img {
+      height: 4rem;
+      max-inline-size: 100%;
+    }
+  }
+}

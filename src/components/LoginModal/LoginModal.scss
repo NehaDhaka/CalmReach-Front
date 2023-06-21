@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
 
-.register-volunteer {
+.login-user {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
@@ -27,11 +27,6 @@
     border-bottom: 1px solid $secondary-brand;
     padding: 0.8rem 1rem;
 
-    &--select {
-      padding: 0.8rem 0.7rem;
-      width: 100%;
-    }
-
     &:hover {
       border-bottom: 1px solid $primary-brand;
     }
@@ -49,7 +44,6 @@
   &__field {
     margin-top: 1rem;
   }
-
   &__button {
     border-radius: 1.25rem;
     border-style: none;
