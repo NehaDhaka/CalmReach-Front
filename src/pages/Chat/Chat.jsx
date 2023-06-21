@@ -1,10 +1,12 @@
 import "./Chat.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Contacts from "../../components/Contacts/Contacts";
 import Welcome from "../../components/Welcome/Welcome";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
+import { io } from "socket.io-client";
 export default function Chat() {
+  const socket = useRef();
   const [currentUser, setCurrentUser] = useState();
   const [existingChats, setExistingChats] = useState([]);
   const [currentChat, setCurrentChat] = useState([]);
@@ -26,10 +28,16 @@ export default function Chat() {
       });
   }, []);
 
+  useEffect(() => {
+    if (currentUser) {
+      socket.current = io("http://localhost:8080");
+      socket.current.emit("add-user", currentUser.id);
+    }
+  }, [currentUser]);
+
   if (existingChats.length === 0 || !currentUser) {
     return <h1>Loading..</h1>;
   }
-  console.log(currentUser);
 
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
@@ -50,6 +58,7 @@ export default function Chat() {
             <ChatContainer
               currentChat={currentChat}
               currentUser={currentUser}
+              socket={socket}
             />
           )}
         </div>
