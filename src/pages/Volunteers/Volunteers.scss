@@ -1,0 +1,159 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.volunteers {
+  padding: 0 1rem;
+
+  @include tablet {
+    padding: 0 2rem;
+  }
+  @include desktop {
+    padding: 0;
+  }
+  &__container {
+    @include desktop {
+      @include desktop-center;
+      margin-top: 2rem;
+    }
+  }
+  &__sub-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__text-container {
+    flex: 1;
+  }
+
+  &__intro-img {
+    width: 100%;
+    @include tablet {
+      width: 60%;
+    }
+    @include desktop {
+      width: 40%;
+    }
+  }
+  &__title {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    color: $primary-brand;
+    @include desktop {
+      font-size: 3rem;
+    }
+  }
+
+  &__detail-container {
+    display: flex;
+    padding-left: 1rem;
+    gap: 1rem;
+
+    @include desktop {
+      padding-left: 3rem;
+    }
+  }
+
+  &__detail-line {
+    height: 2px;
+    width: 2.4rem;
+    background-color: $primary-brand;
+    margin-top: 1rem;
+  }
+
+  &__detail {
+    width: 90%;
+    line-height: 1.4;
+    color: #031519;
+
+    @include desktop {
+      width: 70%;
+      font-size: 1.1rem;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    margin-top: 5rem;
+
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      row-gap: 4rem;
+    }
+
+    @include desktop {
+      justify-content: space-between;
+      gap: 2rem;
+    }
+  }
+  &__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    border-top: 2px solid $primary-brand;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+    @include tablet {
+      width: 40%;
+      border-top: none;
+    }
+
+    @include desktop {
+      width: 30%;
+      padding: 2rem 1rem;
+    }
+    &::before {
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      inset: 0 0 0 0;
+      background: #f8e0ed;
+      z-index: -1;
+      transition: transform 0.5s ease;
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+
+  &__name {
+    color: #072a31;
+  }
+  &__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__item-img {
+    width: 10rem;
+
+    @include desktop {
+      width: 6rem;
+    }
+  }
+}

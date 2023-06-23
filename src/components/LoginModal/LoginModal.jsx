@@ -1,35 +1,19 @@
 import "./LoginModal.scss";
 import Modal from "../Modal/Modal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { handleInputChange, toastOptions } from "../../utils/registration";
+import { loginRoute } from "../../utils/apiRoutes";
 
-export default function RegisterModalUser({ isOpen, onClose }) {
+export default function LoginModal({ isOpen, onClose }) {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
-  const toastOptions = {
-    position: "bottom-right",
-    autoClose: 8000,
-    pauseOnHover: true,
-    draggable: true,
-    theme: "light",
-  };
 
   const handleValidation = () => {
     const { email, password } = formData;
@@ -49,7 +33,7 @@ export default function RegisterModalUser({ isOpen, onClose }) {
       const { email, password } = formData;
 
       axios
-        .post("http://localhost:8080/api/login", {
+        .post(loginRoute, {
           email,
           password,
         })
@@ -74,32 +58,36 @@ export default function RegisterModalUser({ isOpen, onClose }) {
         onClose={onClose}
         title="Unlock a Supportive Community"
       >
-        <div className="login-user">
-          <p className="login-user__description">
+        <div className="register">
+          <p className="register__description">
             Register and connect with compassionate individuals who understand
             and care about your mental health journey. Together, we can navigate
             challenges, share insights, and inspire positive change. Join us
             today!
           </p>
-          <form className="login-user__form" onSubmit={handleFormSubmit}>
+          <form className="register__form" onSubmit={handleFormSubmit}>
             <input
-              className="login-user__input"
+              className="register__input"
               type="email"
               placeholder="Email"
               name="email"
               value={formData.email}
-              onChange={handleInputChange}
+              onChange={(event) => {
+                handleInputChange(event, setFormData);
+              }}
             />
             <input
-              className="login-user__input"
+              className="register__input"
               type="password"
               placeholder="Password"
               name="password"
               value={formData.password}
-              onChange={handleInputChange}
+              onChange={(event) => {
+                handleInputChange(event, setFormData);
+              }}
             />
 
-            <button className="login-user__button" type="submit">
+            <button className="register__button" type="submit">
               Log in
             </button>
           </form>

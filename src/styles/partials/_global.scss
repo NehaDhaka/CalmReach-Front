@@ -1,0 +1,76 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.register {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 4rem;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    @include tablet {
+      padding: 0 2rem;
+    }
+  }
+
+  &__description {
+    line-height: 1.4;
+  }
+
+  &__input {
+    border-style: none;
+    border-bottom: 1px solid $secondary-brand;
+    padding: 0.8rem 1rem;
+
+    &--select {
+      padding: 0.8rem 0.7rem;
+      width: 100%;
+    }
+
+    &:hover {
+      border-bottom: 1px solid $primary-brand;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid $primary-brand;
+    }
+  }
+
+  &__label {
+    margin-left: 0.9rem;
+  }
+
+  &__field {
+    margin-top: 1rem;
+  }
+
+  &__button {
+    border-radius: 1.25rem;
+    border-style: none;
+    background-color: $secondary-brand;
+    padding: 0.8rem 1rem;
+    color: $primary-light;
+    font-size: 1.1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary-light;
+      outline: 2px solid $secondary-brand;
+      color: $secondary-brand;
+    }
+  }
+}
+
+.loader-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

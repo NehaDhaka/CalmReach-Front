@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./ChatContainer.scss";
+import { sendMessageRoute, recieveMessageRoute } from "../../utils/apiRoutes";
 
 export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [messages, setMessages] = useState([]);
@@ -13,7 +14,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   useEffect(() => {
     if (currentChat) {
       axios
-        .post("http://localhost:8080/api/messages/getmsg", {
+        .post(recieveMessageRoute, {
           from: currentUser.id,
           to: currentChat.id,
         })
@@ -22,7 +23,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   }, [currentChat]);
 
   const handleSendMsg = async (msg) => {
-    await axios.post("http://localhost:8080/api/messages/addmsg", {
+    await axios.post(sendMessageRoute, {
       from: currentUser.id,
       to: currentChat.id,
       message: msg,
@@ -68,11 +69,9 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
             <h3>{currentChat.name}</h3>
           </div>
         </div>
-        {/* <Logout /> */}
       </div>
       <div className="chat-container__messages">
         {messages.map((message) => {
-          console.log(message.fromSelf);
           return (
             <div ref={scrollRef} key={uuidv4()}>
               <div

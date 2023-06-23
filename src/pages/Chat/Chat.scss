@@ -3,20 +3,22 @@
 
 .chat {
   &__container {
-    height: 100vh;
-    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
     align-items: center;
-    background-color: peru;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    @include desktop {
+      @include desktop-center;
+    }
   }
 
   &__sub-container {
     height: 85vh;
-    width: 85vw;
-    background-color: aqua;
+    width: 100%;
+    background-color: #fcf0f7;
     display: grid;
     grid-template-columns: 25% 75%;
   }

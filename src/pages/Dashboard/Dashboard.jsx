@@ -1,12 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import img1 from "../../assets/images/dashboard_seeker.png";
+import seekerImg from "../../assets/images/dashboard_seeker.png";
+import volunteerImg from "../../assets/images/dashboard_volunteer.png";
+import DotLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 import "./Dashboard.scss";
-import logo from "../../assets/logos/logo.png";
-
+import { userRoute } from "../../utils/apiRoutes";
+import LoggedHeader from "../../components/LoggedHeader/LoggedHeader";
+import Footer from "../../components/Footer/Footer";
 export default function Dashboard() {
   const [activeUser, setActiveUser] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [quote, setQuote] = useState();
   const randomNumber = Math.floor(Math.random() * (1642 + 1));
 
   let greeting;
@@ -28,46 +33,71 @@ export default function Dashboard() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/user", {
+      .get(userRoute, {
         headers: { Authorization: `Bearer ${sessionStorage.authToken}` },
       })
       .then((res) => {
         setActiveUser(res.data);
-        axios
-          .get("https://type.fit/api/quotes")
-          .then((res) => console.log(res.data[randomNumber]));
+        axios.get("https://type.fit/api/quotes").then((res) => {
+          setQuote(res.data[randomNumber]);
+          setIsLoading(false);
+        });
       })
       .catch((error) => console.log(error));
   }, []);
 
-  if (!activeUser) {
-    return <h1>Loading...</h1>;
-  }
-
   return (
-    <section className="dashboard">
-      <header className="dashboard__header">
-        <img
-          className="dashboard__header-logo"
-          src={logo}
-          alt="CalmReach logo"
-        />
-        <ion-icon
-          className="dashboard__header-icon"
-          name="log-out-outline"
-        ></ion-icon>
-      </header>
-      <div className="dashboard__container">
-        <h1>
-          {greeting}, {activeUser.name}!
-        </h1>
-        <div className="dashboard__quote-container"></div>
-        <img src={img1} alt="" />
-        <Link to="/conversations">Conversations</Link>
-        {activeUser.user_role === "seeker" && (
-          <Link to="/volunteers">View Volunteers</Link>
-        )}
-      </div>
-    </section>
+    <>
+      {isLoading ? (
+        <div className="loader-container">
+          <DotLoader
+            color={"#116a7b"}
+            loading={isLoading}
+            size={30}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <>
+          <LoggedHeader />
+          <section className="dashboard">
+            <div className="dashboard__container">
+              <div className="dashboard__sub-container">
+                <div className="dashboard__text-container">
+                  <h1 className="dashboard__greeting">
+                    {greeting}, {activeUser.name.split(" ")[0]}!
+                  </h1>
+                  <div className="dashboard__quote-container">
+                    <p className="dashboard__quote">"{quote.text}"</p>
+                    <p className="dashboard__quote-author">-{quote.author}</p>
+                  </div>
+                </div>
+
+                <img
+                  className="dashboard__img"
+                  src={
+                    activeUser.user_role === "seeker" ? seekerImg : volunteerImg
+                  }
+                  alt="A girl coming out of a cage"
+                />
+              </div>
+
+              <div className="dashboard__button-container">
+                <Link className="dashboard__button" to="/conversations">
+                  Conversations
+                </Link>
+                {activeUser.user_role === "seeker" && (
+                  <Link className="dashboard__button" to="/volunteers">
+                    View Volunteers
+                  </Link>
+                )}
+              </div>
+            </div>
+          </section>
+          <Footer />
+        </>
+      )}
+    </>
   );
 }

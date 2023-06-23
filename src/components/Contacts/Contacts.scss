@@ -2,10 +2,11 @@
 @use "../../styles/partials/variables" as *;
 
 .contacts {
+  padding-top: 1rem;
   display: grid;
-  grid-template-rows: 85% 15%;
+  grid-template-rows: 100%;
   overflow: hidden;
-  background-color: #080420;
+  background-color: #e7f0f2;
 
   &__container {
     display: flex;
@@ -16,14 +17,13 @@
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
-        background-color: #ffffff39;
+        background-color: $primary-brand;
         width: 0.1rem;
         border-radius: 1rem;
       }
     }
   }
   &__item {
-    background-color: #ffffff34;
     min-height: 5rem;
     cursor: pointer;
     width: 90%;
@@ -37,34 +37,43 @@
 
   &__item-name {
     h3 {
-      color: white;
+      color: #454849;
     }
   }
   &__item-img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
-      height: 3rem;
+      height: 2rem;
     }
   }
 
   .selected {
-    background-color: #9a86f3;
+    background-color: #d2e9e9;
   }
 
   &__current-user {
-    background-color: #0d0d30;
+    background-color: $primary-brand;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.4rem;
     gap: 2rem;
   }
   &__current-username {
     h2 {
       color: white;
+      font-size: 1.2rem;
     }
   }
   &__current-avatar {
     img {
-      height: 4rem;
+      height: 2rem;
       max-inline-size: 100%;
     }
   }
