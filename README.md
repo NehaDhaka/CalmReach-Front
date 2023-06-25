@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Calm Reach - Front End Repository
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the front end repository of Calm Reach, a Mental Health Support App! This repository contains the code for the front end implementation of Calm Reach, built using JavaScript, Sass, React, and other technologies.
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+Calm Reach is a web application designed to provide support for individuals struggling with mental health. It connects users with volunteers who are available to have conversations and provide assistance free of charge. The front end of Calm Reach offers an intuitive user interface, allowing seekers to interact with volunteers through live messaging.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To get started with the front end development of Calm Reach, follow the instructions below.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+- Node.js and npm installed on your machine.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. Clone this repository to your local machine using the following command:
+   git clone https://github.com/NehaDhaka/CalmReach-Front
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
+   cd calmreach-front
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install the required dependencies:
+   npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Configuration
 
-### `npm run eject`
+Before running the app, you need to set up the environment variables.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Locate the `.env.sample` file in the project root.
+2. Create a new `.env` file based on the sample file and replace the placeholder values with your own configuration.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running the App
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To run the front end app, execute the following command:
+npm start
+This command starts the development server and opens the app in your default browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Back End Repository
 
-## Learn More
+The back end repository of Calm Reach can be found at: https://github.com/NehaDhaka/CalmReach-Back
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy coding!
