@@ -45,7 +45,9 @@ export default function Dashboard() {
       })
       .catch((error) => console.log(error));
   }, []);
-
+  useEffect(() => {
+    document.title = "Calm Reach | Dashboard";
+  }, []);
   return (
     <>
       {isLoading ? (

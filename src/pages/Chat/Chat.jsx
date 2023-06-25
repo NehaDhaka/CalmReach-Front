@@ -75,7 +75,9 @@ export default function Chat() {
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
   };
-
+  useEffect(() => {
+    document.title = "Calm Reach | Conversations";
+  }, []);
   return (
     <>
       <LoggedHeader />

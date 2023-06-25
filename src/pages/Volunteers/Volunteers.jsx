@@ -67,6 +67,10 @@ export default function Volunteers() {
       .then(navigate("/conversations"));
   };
 
+  useEffect(() => {
+    document.title = "Calm Reach | Volunteers";
+  }, []);
+
   return (
     <>
       {isLoading ? (
