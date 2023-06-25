@@ -74,3 +74,30 @@
   justify-content: center;
   align-items: center;
 }
+
+.not-found {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem;
+  gap: 2rem;
+  img {
+    width: 100%;
+
+    @include tablet {
+      width: 60%;
+    }
+    @include desktop {
+      width: 50%;
+    }
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+  @include tablet {
+    @include desktop-center;
+  }
+}
