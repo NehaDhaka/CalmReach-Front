@@ -22,7 +22,9 @@ export default function Welcome({ currentUser, currentChat, existingChats }) {
               </Link>
             </div>
           ) : (
-            "Please wait for a seeker to contact you"
+            <p className="welcome__description">
+              Please wait for a seeker to contact you
+            </p>
           )}
         </div>
       </div>
