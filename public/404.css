@@ -1,0 +1,38 @@
+.not-found {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem;
+  gap: 2rem;
+}
+
+.not-found img {
+  width: 100%;
+}
+
+.not-found p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+@media only screen and (min-width: 768px) {
+  .not-found img {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .not-found img {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
