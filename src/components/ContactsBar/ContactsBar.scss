@@ -1,6 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixin" as *;
-.navbar {
+.contact-bar {
   height: 80px;
   display: flex;
   justify-content: flex-start;
@@ -11,22 +11,21 @@
   }
 
   &__menu-bars {
-    margin-left: 2rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     background: none;
 
     &--close {
       width: 100vw;
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-start;
       margin-left: 0;
-      padding-right: 1rem;
+      padding-left: 1rem;
     }
   }
 
   &__menu {
     background-color: $primary-light;
-    padding-top: 3rem;
+    padding-top: 5rem;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -41,7 +40,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 1rem;
     align-items: center;
     width: 100%;
   }
@@ -52,7 +51,7 @@
     font-size: 1.5rem;
   }
 }
-.navbar__menu.active {
-  right: 0;
+.contact-bar__menu.active {
+  left: 0;
   transition: 350ms;
 }

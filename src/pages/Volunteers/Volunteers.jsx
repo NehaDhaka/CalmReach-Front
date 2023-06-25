@@ -1,7 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { userRoute, volunteersRoute } from "../../utils/apiRoutes";
+import {
+  userRoute,
+  volunteersRoute,
+  addContactRoute,
+} from "../../utils/apiRoutes";
 import LoggedHeader from "../../components/LoggedHeader/LoggedHeader";
 import DotLoader from "react-spinners/ClipLoader";
 import "./Volunteers.scss";
@@ -11,9 +15,10 @@ import Footer from "../../components/Footer/Footer";
 
 export default function Volunteers() {
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
   const [volunteerList, setVolunteerList] = useState();
+
   useEffect(() => {
     if (!sessionStorage.authToken) {
       navigate("/");
@@ -27,6 +32,7 @@ export default function Volunteers() {
           if (response.data.user_role === "volunteer") {
             navigate("/dashboard");
           } else {
+            setCurrentUser(response.data);
             axios
               .get(volunteersRoute, {
                 headers: {
@@ -46,7 +52,21 @@ export default function Volunteers() {
     }
   }, []);
 
-  console.log(volunteerList);
+  const handleOnClick = (volunteerId) => {
+    axios
+      .post(
+        addContactRoute,
+        {
+          seeker: currentUser.id,
+          volunteer: volunteerId,
+        },
+        {
+          headers: { Authorization: `Bearer ${sessionStorage.authToken}` },
+        }
+      )
+      .then(navigate("/conversations"));
+  };
+
   return (
     <>
       {isLoading ? (
@@ -87,7 +107,13 @@ export default function Volunteers() {
               </div>
               <ul className="volunteers__list">
                 {volunteerList.map((volunteer) => (
-                  <li key={volunteer.id} className="volunteers__item ">
+                  <li
+                    onClick={() => {
+                      handleOnClick(volunteer.id);
+                    }}
+                    key={volunteer.id}
+                    className="volunteers__item "
+                  >
                     <img
                       className="volunteers__item-img"
                       src={volunteerCard}

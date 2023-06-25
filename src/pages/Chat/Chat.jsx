@@ -5,10 +5,15 @@ import Contacts from "../../components/Contacts/Contacts";
 import Welcome from "../../components/Welcome/Welcome";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
 import { io } from "socket.io-client";
-import { userRoute } from "../../utils/apiRoutes";
+import {
+  userRoute,
+  getVolunteersRoute,
+  getSeekersRoute,
+} from "../../utils/apiRoutes";
 import DotLoader from "react-spinners/ClipLoader";
 import Footer from "../../components/Footer/Footer";
 import LoggedHeader from "../../components/LoggedHeader/LoggedHeader";
+import ContactsBar from "../../components/ContactsBar/ContactsBar";
 
 export default function Chat() {
   const socket = useRef();
@@ -19,19 +24,44 @@ export default function Chat() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/volunteerslist", {
+      .get(userRoute, {
         headers: { Authorization: `Bearer ${sessionStorage.authToken}` },
       })
       .then((res) => {
-        setExistingChats(res.data);
-        axios
-          .get(userRoute, {
-            headers: { Authorization: `Bearer ${sessionStorage.authToken}` },
-          })
-          .then((res) => {
-            setCurrentUser(res.data);
-            setIsLoading(false);
-          });
+        setCurrentUser(res.data);
+        return res.data;
+      })
+      .then((res) => {
+        if (res.user_role === "seeker") {
+          axios
+            .post(
+              getVolunteersRoute,
+              {
+                seeker: res.id,
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${sessionStorage.authToken}`,
+                },
+              }
+            )
+            .then((response) => setExistingChats(response.data));
+        } else {
+          axios
+            .post(
+              getSeekersRoute,
+              {
+                volunteer: res.id,
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${sessionStorage.authToken}`,
+                },
+              }
+            )
+            .then((response) => setExistingChats(response.data));
+        }
+        setIsLoading(false);
       });
   }, []);
 
@@ -68,8 +98,17 @@ export default function Chat() {
                 currentUser={currentUser}
                 changeChat={handleChatChange}
               />
+              <ContactsBar
+                existingChats={existingChats}
+                currentUser={currentUser}
+                changeChat={handleChatChange}
+              />
               {existingChats.length <= 0 || currentChat.length <= 0 ? (
-                <Welcome currentUser={currentUser} />
+                <Welcome
+                  currentUser={currentUser}
+                  existingChats={existingChats.length}
+                  currentChat={currentChat.length}
+                />
               ) : (
                 <ChatContainer
                   currentChat={currentChat}

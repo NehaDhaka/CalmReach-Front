@@ -11,7 +11,10 @@ export default function Header({ handleUserRegister, handleLoginModal }) {
           <img src={logo} alt="Logo" />
         </Link>
 
-        <Hamburger />
+        <Hamburger
+          handleUserRegister={handleUserRegister}
+          handleLoginModal={handleLoginModal}
+        />
 
         <nav className="header__nav">
           <ul className="header__nav-list">

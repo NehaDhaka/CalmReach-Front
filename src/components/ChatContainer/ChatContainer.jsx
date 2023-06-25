@@ -23,6 +23,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   }, [currentChat]);
 
   const handleSendMsg = async (msg) => {
+    console.log(currentChat.id);
     await axios.post(sendMessageRoute, {
       from: currentUser.id,
       to: currentChat.id,
@@ -73,17 +74,17 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
       <div className="chat-container__messages">
         {messages.map((message) => {
           return (
-            <div ref={scrollRef} key={uuidv4()}>
-              <div
-                className={`chat-container__message ${
-                  message.fromSelf
-                    ? "chat-container__sent"
-                    : "chat-container__recieved"
-                }`}
-              >
-                <div className="chat-container__content ">
-                  <p>{message.message}</p>
-                </div>
+            <div
+              ref={scrollRef}
+              key={uuidv4()}
+              className={`chat-container__message ${
+                message.fromSelf
+                  ? "chat-container__sent"
+                  : "chat-container__recieved"
+              }`}
+            >
+              <div className="chat-container__content ">
+                <p>{message.message}</p>
               </div>
             </div>
           );

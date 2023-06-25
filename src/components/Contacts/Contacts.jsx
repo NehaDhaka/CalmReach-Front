@@ -13,7 +13,7 @@ export default function ({ existingChats, currentUser, changeChat }) {
         {existingChats.map((contact, index) => {
           return (
             <div
-              key={contact._id}
+              key={contact.id}
               className={`contacts__item ${
                 index === currentSelected ? "selected" : ""
               }`}

@@ -1,54 +1,49 @@
-import { Link, NavLink } from "react-router-dom";
-import "./Hamburger.scss";
+import { Link } from "react-router-dom";
 import { useState } from "react";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import "./Hamburger.scss";
+import { IconContext } from "react-icons/lib";
+export default function Hamburger({ handleUserRegister, handleLoginModal }) {
+  const [sidebar, setSidebar] = useState(false);
 
-export default function Hamburger() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleR = () => {
-    console.log("hi");
-  };
-
+  const showBar = () => setSidebar(!sidebar);
   return (
-    <div className="hamburger-menu">
-      <div className={`hamburger `} onClick={handleClick}>
-        <div
-          className={`hamburger__line  hamburger__line--first ${
-            isOpen ? "hamburger__line--first-open" : ""
-          }`}
-        ></div>
-        <div
-          className={`hamburger__line hamburger__line--second ${
-            isOpen ? "hamburger__line--second-open" : ""
-          }`}
-        ></div>
-        <div
-          className={`hamburger__line  hamburger__line--third ${
-            isOpen ? "hamburger__line--third-open" : ""
-          }`}
-        ></div>
-      </div>
-      <div
-        className={`hamburger__menu-items ${isOpen ? "hamburger__open" : ""}`}
-      >
-        <ul className="hamburger__menu-list">
-          <li className="hamburger__menu-item">
-            <NavLink onClick={handleR} to="/" className="hamburger__menu-link">
-              Home
-            </NavLink>
-          </li>
-          <li className="hamburger__menu-item">
-            <a className="hamburger__menu-link">Login</a>
-          </li>
-          <li onClick={handleR} className="hamburger__menu-item">
-            <a className="hamburger__menu-link">Register</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <>
+      <IconContext.Provider value={{ color: "#116a7b" }}>
+        <div className="navbar">
+          <Link to="#" className="navbar__menu-bars">
+            <FaIcons.FaBars onClick={showBar} />
+          </Link>
+        </div>
+        <nav className={sidebar ? "navbar__menu active" : "navbar__menu"}>
+          <ul className="navbar__menu-items" onClick={showBar}>
+            <li className="navbar__toggle">
+              <Link
+                to="#"
+                className="navbar__menu-bars navbar__menu-bars--close"
+              >
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            <li className="navbar__item">
+              <Link className="navbar__link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="navbar__item">
+              <Link className="navbar__link" onClick={handleLoginModal}>
+                Login
+              </Link>
+            </li>
+            <li className="navbar__item">
+              <Link className="navbar__link" onClick={handleUserRegister}>
+                Register
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </IconContext.Provider>
+    </>
   );
 }

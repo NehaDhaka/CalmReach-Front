@@ -2,11 +2,14 @@
 @use "../../styles/partials/variables" as *;
 
 .contacts {
-  padding-top: 1rem;
-  display: grid;
-  grid-template-rows: 100%;
-  overflow: hidden;
-  background-color: #e7f0f2;
+  display: none;
+  @include tablet {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-rows: 100%;
+    overflow: hidden;
+    background-color: #e7f0f2;
+  }
 
   &__container {
     display: flex;

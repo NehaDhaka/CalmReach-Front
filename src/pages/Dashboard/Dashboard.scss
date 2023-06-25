@@ -2,16 +2,24 @@
 @use "../../styles/partials/variables" as *;
 
 .dashboard {
+  margin-bottom: 3rem;
+  @include desktop {
+    margin-bottom: 10rem;
+  }
   &__container {
     border-radius: 10px;
     background-color: #fdeeed;
     display: flex;
     flex-direction: column;
+    padding: 2rem 1rem;
     gap: 2rem;
-    @include desktop {
-      @include desktop-center;
-      margin-top: 5rem;
+    @include tablet {
       padding: 2rem;
+      @include desktop-center;
+      gap: 0rem;
+    }
+    @include desktop {
+      margin-top: 5rem;
     }
   }
 
@@ -23,6 +31,13 @@
   &__sub-container {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: flex-start;
+    }
   }
 
   &__quote-container {
@@ -39,19 +54,36 @@
   }
 
   &__quote {
+    font-size: 1.1rem;
   }
 
   &__img {
-    width: 40%;
+    width: 80%;
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include desktop {
+      width: 30%;
+    }
   }
 
   &__button-container {
     display: flex;
     justify-content: center;
-    gap: 5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    @include tablet {
+      flex-direction: row;
+      gap: 5rem;
+    }
   }
 
   &__button {
+    width: 10rem;
+    text-align: center;
     text-decoration: none;
     line-height: 42px;
     color: #33302f;

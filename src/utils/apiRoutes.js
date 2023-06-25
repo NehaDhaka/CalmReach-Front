@@ -5,3 +5,6 @@ export const sendMessageRoute = `${baseURL}/api/messages/addmsg`;
 export const recieveMessageRoute = `${baseURL}/api/messages/getmsg`;
 export const userRoute = `${baseURL}/api/user`;
 export const volunteersRoute = `${baseURL}/api/volunteers`;
+export const addContactRoute = `${baseURL}/api/contacts/addContact`;
+export const getVolunteersRoute = `${baseURL}/api/contacts/getVolunteers`;
+export const getSeekersRoute = `${baseURL}/api/contacts/getSeekers`;
